@@ -12,7 +12,7 @@ From a real world perspective, obviously strokes are a very serious issue.  Acco
 
 ### Description of Data
 
-This data shows demographic and health information about 5,100 patients and whether or not they had a stroke. The demographic information is age, marital status, gender, work type and residence type. Health information is hyper tension, heart disease, blood sugar, bmi and whether or not they smoke.
+This data shows demographic and health information about 5,100 patients and whether or not they had a stroke. The demographic information is age, marital status, gender, work type and residence type. Health information is hypertension, heart disease, blood sugar, bmi and whether or not they smoke. In the data set a 1 indicates the patient has had a stroke and a 0 indicates they have not had a stroke.
 
 ### Questions to Answer
 * Given the information we have started with, can we create a machine learning program which accurately predicts which people have had a stroke (or are likely to)?
