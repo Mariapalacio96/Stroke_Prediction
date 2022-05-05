@@ -6,6 +6,11 @@ y_pred int);
 SELECT * FROM prediction_results
 SELECT * FROM stroke_data
 
+ALTER TABLE prediction_results
+ADD CONSTRAINT fk_stroke_data
+FOREIGN KEY (id) 
+REFERENCES stroke_data (id);
+
 DELETE FROM prediction_results;
 DELETE FROM stroke_data;
 
