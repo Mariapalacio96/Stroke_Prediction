@@ -2,6 +2,17 @@
 INSERT INTO stroke_data
 SELECT * FROM stroke_clean;
 
+CREATE TABLE results(
+id varchar,
+y_test int,
+y_pred int)
+
+
+
+INSERT INTO results
+SELECT * FROM prediction_results;
+
+
 SELECT sc.ID,
 sc.Gender,
 sc.Age,
@@ -14,7 +25,7 @@ sc.Glucose,
 sc.BMI,
 sc.Smoking,
 sc.Stroke,
-pr.y_pred
+r.y_pred
 FROM stroke_data as sc
-JOIN prediction_results as pr
-ON sc.id = pr.id;
+JOIN results as r
+ON sc.id = r.id;
