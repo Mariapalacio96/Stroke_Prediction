@@ -2,6 +2,9 @@
 
 ## Deliverable 1
 
+Slides:
+https://docs.google.com/presentation/d/1T1olflH12lzSqILTFJWoFIN8zBhSiSef2Qs52ikFzmE/edit?usp=sharing
+
 ### Topic
 
 We picked a dataset of patient stroke data found on Kaggle: [Stroke Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset)
