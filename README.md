@@ -38,7 +38,7 @@ When we did the machine learning model, the first time, it was predicting if a p
 We used the train_test_split function of sklearn to create training and testing data. We used the default settings for the function that uses 70% for the training set and 30% for the testing set.
 
 ### Machine Learning Model
-We chose to use supervised machine learning because our data has a discrete outcome. Whether or not a patient had a stroke given certain characteristics. The machine learning model that had the most success predicting stroke results was the random forest model. It made the correct prediction 75% of the time vs. all of the other models we tried which were correct (55% to 74%) of the time.
+We chose to use supervised machine learning because our data has a discrete outcome. Whether or not a patient had a stroke given certain characteristics. The machine learning model that had the most success predicting stroke results was the naive random oversampling model. It made the correct prediction 76% of the time vs. all of the other models we tried which were correct (50% to 74%) of the time.
 
 ![]()
 ![]()
