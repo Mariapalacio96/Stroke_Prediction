@@ -35,3 +35,7 @@ We used the train_test_split function of sklearn to create training and testing 
 ### Machine Learning Model
 We chose to use supervised machine learning because our data has a discrete outcome. Whether or not a patient had a stroke given certain characteristics. The machine learning model that had the most success predicting stroke results was the random forest classifier model. It made the correct prediction 77% of the time vs. all of the other models we tried which were correct (50% to 76%) of the time.
 
+### Dashboard
+The following link will direct you to the dashboard where you will find a few vezualisations of the factors that have the most influence in having a stroke
+
+https://mariapalacio96.github.io/Stroke_Prediction/
