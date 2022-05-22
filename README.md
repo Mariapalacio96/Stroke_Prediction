@@ -1,7 +1,5 @@
 # Stroke Prediction
 
-## Deliverable 1
-
 Slides:
 https://docs.google.com/presentation/d/1T1olflH12lzSqILTFJWoFIN8zBhSiSef2Qs52ikFzmE/edit?usp=sharing
 
@@ -22,12 +20,6 @@ This data shows demographic and health information about 5,100 patients and whet
 * Which factors have a statistically significant correlation on the result of having a stroke, and what is that correlation?
 * Do some factors correlate more with having a stroke than others?
 
-### Communication Process
-
-In addition to divvying up main responsibilities and setting up our GitHub repository with separate branches, we set up a few plans for communication.  We established a Slack group chat for quick and easy communication and the sharing of information.  We also made plans for a Zoom chat on Sunday go over things and make sure everything is in order before we submit our progress so far.
-
-
-## Deliverable 2
 
 ### Exploratory Data
 Out of the 5100 rows, 201 rows were dropped with null BMIs and the one with other Gender.  There were 1483 rows with unknown Smoking, but we didn't want to eliminate 1/3rd of the dataset. All ages were rounded to a whole number. 
@@ -39,14 +31,4 @@ We used the train_test_split function of sklearn to create training and testing 
 
 ### Machine Learning Model
 We chose to use supervised machine learning because our data has a discrete outcome. Whether or not a patient had a stroke given certain characteristics. The machine learning model that had the most success predicting stroke results was the random forest classifier model. It made the correct prediction 77% of the time vs. all of the other models we tried which were correct (50% to 76%) of the time.
-
-![]()
-![]()
-![]()
-![]()
-
-
-## Deliverable 3
-
-## Deliverable 4
 
