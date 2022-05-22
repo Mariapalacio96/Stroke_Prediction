@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Stroke Patient Data</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body style="background-image: radial-gradient(#b5c8d2, #72abc9, #2e94c9);">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center" style="background-image: url('https://www.lancastergeneralhealth.org/-/media/images/lancaster%20general/images/healthhub/landing%20page%20blog%20portlet/strokeimage_thrombectomy_1000x440.ashx'); background-position: center; background-color: rgb(49, 75, 75); background-size: cover; color: white;">
+        <h1 class="display-4">Stroke Patient Dashboard</h1>
+      </div>
+
+    <div class="row">
+      <div class="col-md-9 text-left">
+        <h4 class="indent">According to the CDC's Stroke Facts, nearly 800,000 strokes occur in the United States on an annual basis. Of those, there is approximately a 15% 30-day mortality rate. Even for people who survive, many can be left with either very long roads to recovery or ultimately serious long-term disability. By helping to uncover what factors are more likely to lead to strokes, we ultimately hope to help people avoid them in the first place.</h4>
+        <br>
+        <h4 class="indent">We chose the Random Forest classifier model to predict whether patients would or would not have a stroke.  The model was able to predict whether a patient had a stroke with 77% accuracy.</h4><br>  
+      </div>
+      <div class="col-md-3">
+        <div class="well">
+          <h5>Patient ID No.:</h5>
+          <!-- <select id="selDataset"></select> -->
+          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Demographic Info</h3>
+          </div>
+          <div id="sample-metadata" class="panel-body"></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-12 text-center">
+      <h2>Stroke Main Causes</h2>
+      <div><img class="marginauto" src="Resources/stroke_heatmap2.png" alt="centered image"/></div>
+      <p>This chart shows the factors that contribute the most to having a stroke.</p>
+    </div>
+    <br><br>
+
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <h2>Age</h2>
+        <div><img class="marginauto" src="Resources/stroke_age.png" alt="centered image"/></div>
+        <p>This chart shows the Age of stroke patients.</p>
+      </div>
+      <div class="col-md-6 text-center">
+        <h2>Glucose Level</h2>
+        <div><img class="marginauto" src="Resources/stroke_glucose.png" alt="centered image"/></div>
+        <p>This chart shows the glucose level of stroke patients.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <h2>BMI</h2>
+        <div><img class="marginauto" src="Resources/stroke_bmi.png" alt="centered image"/></div>
+        <p>This chart shows the BMI of stroke patients.</p>
+      </div>
+      <div class="col-md-6 text-center">
+        <h2>Ever Married</h2>
+        <div><img class="marginauto" src="Resources/stroke_evermarried.png" alt="centered image"/></div>
+        <p>This chart shows the marriage status of stroke patients.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="demographics.js"></script>
+
+</body>
+
+</html>
