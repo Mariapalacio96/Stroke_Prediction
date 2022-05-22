@@ -1,0 +1,29 @@
+Make code interact with database
+	Extract dataset to do machine learning
+	load  predictions back into database
+	create sql query comparing predictions to actual results
+	
+Visualizations
+	make visualizations that answer questions on the readme
+	why we are showing what we are showing
+Visualization Ideas
+	Age, Sex and other characteristics correlate to stroke. 
+	Age - Pie chart, Sex - bar. 
+	Confusion matrix
+	Coefficient
+
+
+Explanations
+
+
+
+
+Dashboard
+	skeleton of webpage
+
+
+Start making narrative of the data.
+
+Start making slides.
+	
+		
