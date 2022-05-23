@@ -27,7 +27,7 @@ Out of the 5100 rows, 201 rows were dropped with null BMIs and the one with othe
 When we did the machine learning model, the first time, it was predicting if a patient would not have a stroke. The confusion matrix wasn't intuitive and a little confusing. We wanted the analysis to predict the likelihood of a stroke. To make the machine learning results less confusing we changed the original dataset to reflect 1 as stroke and 0 as no stroke. 
 
 ### Feature Selection
-We dropped the ID column because that was a unique identifier for each patient and wouldn't influece the patient having a stroke. We changed all of the data in columns that had words to a binary 1 or 0 so it could be the machine learning model. They were changed back to be used in visualizations.
+We dropped the ID column because that was a unique identifier for each patient and wouldn't influence the patient having a stroke. We changed all of the data in columns that had words to a binary 1 or 0 so it could be the machine learning model. They were changed back to be used in visualizations.
 
 ### Splitting Data
 We used the train_test_split function of sklearn to create training and testing data. We used the default settings for the function that uses 70% for the training set and 30% for the testing set.
