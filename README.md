@@ -1,7 +1,6 @@
 # Stroke Prediction
 
-Slides:
-https://docs.google.com/presentation/d/1T1olflH12lzSqILTFJWoFIN8zBhSiSef2Qs52ikFzmE/edit?usp=sharing
+Slides: [Presentation](https://docs.google.com/presentation/d/1T1olflH12lzSqILTFJWoFIN8zBhSiSef2Qs52ikFzmE/edit?usp=sharing)
 
 ### Topic
 
