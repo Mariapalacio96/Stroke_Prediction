@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Stroke Patient Dashboard</title>
+  <title>Stroke Prediction Dashboard</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/css/style.css">
 </head>
@@ -15,7 +15,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center" style="background-image: url('https://www.lancastergeneralhealth.org/-/media/images/lancaster%20general/images/healthhub/landing%20page%20blog%20portlet/strokeimage_thrombectomy_1000x440.ashx'); background-position: center; background-color: rgb(49, 75, 75); background-size: cover; color: white;">
-        <h1 class="display-4">Stroke Patient Dashboard</h1>
+        <h1 class="display-4">Stroke Prediction Dashboard</h1>
       </div>
 
     <div class="row">
@@ -52,17 +52,20 @@
         <img class="marginauto" src="Resources/initial_dataset.png" alt="centered image"/>
       </div>
       <p>* for hypertension, heart_disease, and stroke columns, 0 = no and 1 = yes</p>
+      <br><h4 style="text-align: left;" class="indent">We were lucky enough to start out with a relatively clean dataset.  It did include 201 null ("NaN") results for BMI and one other Gender that were all dropped in the cleaning process, but that still left us with a substantial group of 4,908 people to work with.  Unfortunately, the ultimate origin of the data was unknown, and that would be something that could influence the results.  If, for instance, the data came from people who were already concerned about a stroke, or just one hospital, or even a particular region in the United States, those are all things that could introduce bias to the data.  As a result, we were left to ask our own questions about the data and how it could potentially impact our findings.</h4><br>
     </div>
 
     <div class="row">
       <div class="col-md-6 text-center">
         <h3><b>Gender</b></h3>
         <div><img class="marginauto" src="Resources/demo_gender.png" alt="centered image"/></div>
+        <br><h4 style="text-align: left;" class="indent">Gender is one category where we could clearly see that the data wasn't completely randomly selected.  While you would expect to see something close to a 50/50 split, this was closer to 60/40.  Did some of the data come from a women's clinic, introducing more women to our sample than men?  Do women simply go to the hospital more often, and that's where our data came from?  While this wasn't necessarily a problem, it did make it clear that our data wasn't a completely random sample.</h4><br>
       </div>
       <div class="col-md-6 text-center">
         <h3><b>Age</b></h3>
         <div><img class="marginauto" src="Resources/demo_age.png" alt="centered image"/></div>
-        </div>
+        <br><h4 style="text-align: left;" class="indent">Age was another category that piqued our interest.  While in a completely random sample you would expect to see ages that approximate that of our population, here the ages gradually increased before falling off after the age of 50.  Then, while we had a number of people who were exactly 82 years old, there was nobody in the dataset who was older, which seemed very strange.  Was the overall trend because older people go to the hospital more often, and that's where the data came from?  Was there a cutoff after the age of 82 for some reason?  Again, this didn't really cause any problems, but it did raise questions about the original source of the data.</h4><br>
+      </div>
     </div>
     <br><br>
 
@@ -86,7 +89,8 @@
       <div class="col-md-6 text-center">
         <h3><b>Employment</b></h3>
         <div><img class="marginauto" src="Resources/demo_work.png" alt="centered image"/></div>
-        </div>
+        <br><h4 style="text-align: left;" class="indent">Employment seems like it would be both a very interesting and useful category to look at when trying to see how it correlates to strokes.  Are people with certain occupations more prone to strokes than others?  That seems like it would be a good thing to know!  Unfortunately, this data was lacking in that regard.  While it was complete, lumping the vast majority of people into a nebulous Private group wasn't particularly helpful.  While this wasn't completely useless, it would have been preferable to have had access to more specific job titles.</h4><br>
+      </div>
     </div>
     <br><br>
 
@@ -106,12 +110,13 @@
         <div class="col-md-6 text-center">
           <h3><b>Body Mass Index</b></h3>
           <div><img class="marginauto" src="Resources/demo_bmi.png" alt="centered image"/></div>
-          <p>* BMI &lt;18.5 = underweight, 18.5-24.9 = normal, 25-29.9 = overweight, &#62;30 = obese</p>
+          <p>* BMI &lt;18.5 = underweight, 18.5-24.9 = normal, 25-29.9 = overweight, &ge;30 = obese</p>
         </div>
         <div class="col-md-6 text-center">
           <h3><b>Smoking Status</b></h3>
           <div><img class="marginauto" src="Resources/demo_smoking.png" alt="centered image"/></div>
-          </div>
+          <br><h4 style="text-align: left;" class="indent">How much of an impact smoking has on having a stroke is definitely something we wanted to look at.  While that information was included here, for some reason, the status was listed as unknown for nearly 1,500 of the participants.  Unlike with BMI where we lacked information for only a small percentage of the people, here it was much more than that.  We didn't want to lose one third of our dataset because of this, so we opted to leave the Unknown results in there.</h4><br>  
+        </div>
         </div>
 
       <div class="row">
@@ -125,7 +130,7 @@
     </div>
     <div class="col-md-12 text-center">
       <h2><b>Stroke Prediction</b></h2>
-      <br><p>Since our data included the ultimate result that we were looking for (whether or not the person had a stroke), we used supervised machine learning to attempt to predict whether or not someone had a stroke given the ten different factors in the dataset.  We used six different methods: logistical regression with naive random oversampling, SMOTE oversampling, logistical regression with undersampling, SMOTEENN combination (over and under) sampling, balanced random forest, and easy ensemble.  In the end, balanced random forest reigned supreme with 77% accuracy, while the other methods ranged from 50% (logistical regression with undersampling) to 76% (logistical regression with random oversampling).</p><br>
+      <br><h4 style="text-align: left;" class="indent">Since our data included the ultimate result that we were looking for (whether or not the person had a stroke), we used supervised machine learning to attempt to predict whether or not someone had a stroke given the ten different factors in the dataset.  We used six different methods: logistical regression with naive random oversampling, SMOTE oversampling, logistical regression with undersampling, SMOTEENN combination (over and under) sampling, balanced random forest, and easy ensemble.  In the end, balanced random forest reigned supreme with 77% accuracy, while the other methods ranged from 50% (logistical regression with undersampling) to 76% (logistical regression with random oversampling).</h4><br>
       <h3><b>Random Forest Classification Report</b></h3>
       <div>
         <img class="marginauto" src="Resources/rf_classification_report.png" alt="centered image"/>
@@ -143,18 +148,19 @@
     <h2><b>Stroke Factor Correlation Matrix</b></h2>
     <div>
       <img class="marginauto" src="Resources/stroke_heatmap2.png" alt="centered image"/>
+      <br><h4 style="text-align: left;" class="indent">This correlation matrix illustrates how each of the factors is correlated to one another.  Ultimately we are interested in how (and how much) each factor is related to having a stroke.  Since the last column (stroke_stroke) features people who have had a stroke, we can look at the bottom row to see how each of the other factors relates to that.  Factors with the highest correlation are shaded closer to red (the highest being Age), while those with negative correlation (not having heart disease or hypertension) are more blue.  Factors that didn't have much of an influence either way (Residence type) are right in the middle.</h4><br>
     </div>
   </div>
   <br><br><br>
 
     <div class="col-md-12 text-center">
-      <h2><b>Stroke Liklihood via Each Factor</b></h2>
+      <h2><b>Stroke Likelihood via Each Factor</b></h2>
     </div>
     <div class="row">
       <div class="col-md-6 text-center">
         <h3><b>Gender</b></h3>
         <div><img class="marginauto" src="Resources/stroke_gender.png" alt="centered image"/></div>
-        <h4><b>Stroke liklihood via Gender</b></h4>
+        <h4><b>Stroke likelihood via Gender</b></h4>
         <table class="center">
           <tr>
             <th>Gender &nbsp</th>
@@ -175,11 +181,12 @@
             <td><b>4.142%</b></td>
           </tr>
         </table>
+        <br><h4 style="text-align: left;" class="indent">While we found that men are more likely to have strokes than women (4.426% vs 4.142%), it was fairly balanced between the two.</h4><br>
       </div>
       <div class="col-md-6 text-center">
         <h3><b>Age</b></h3>
         <div><img class="marginauto" src="Resources/stroke_age.png" alt="centered image"/></div>
-        <h4><b>Stroke liklihood via Age</b></h4>
+        <h4><b>Stroke likelihood via Age</b></h4>
         <table class="center">
           <tr>
             <th>Age &nbsp</th>
@@ -194,96 +201,97 @@
             <td><b>0.000%</b></td>
           </tr>
           <tr>
-            <td>5-10</td>
+            <td>6-10</td>
             <td>0</td>
             <td>182</td>
             <td><b>0.000%</b></td>
           </tr>
           <tr>
-            <td>10-15</td>
+            <td>11-15</td>
             <td>1</td>
             <td>233</td>
             <td><b>0.427%</b></td>
           </tr>
           <tr>
-            <td>15-20</td>
+            <td>16-20</td>
             <td>0</td>
             <td>273</td>
             <td><b>0.000%</b></td>
           </tr>
           <tr>
-            <td>20-25</td>
+            <td>21-25</td>
             <td>0</td>
             <td>264</td>
             <td><b>0.000%</b></td>
           </tr>
           <tr>
-            <td>25-30</td>
+            <td>26-30</td>
             <td>0</td>
             <td>271</td>
             <td><b>0.000%</b></td>
           </tr>
           <tr>
-            <td>30-35</td>
+            <td>31-35</td>
             <td>1</td>
             <td>312</td>
             <td><b>0.319%</b></td>
           </tr>
           <tr>
-            <td>35-40</td>
+            <td>36-40</td>
             <td>4</td>
             <td>331</td>
             <td><b>1.194%</b></td>
           </tr>
           <tr>
-            <td>40-45</td>
+            <td>41-45</td>
             <td>5</td>
             <td>358</td>
             <td><b>1.377%</b></td>
           </tr>
           <tr>
-            <td>45-50</td>
+            <td>46-50</td>
             <td>10</td>
             <td>343</td>
             <td><b>2.833%</b></td>
           </tr>
           <tr>
-            <td>50-55</td>
+            <td>51-55</td>
             <td>15</td>
             <td>403</td>
             <td><b>3.589%</b></td>
           </tr>
           <tr>
-            <td>55-60</td>
+            <td>56-60</td>
             <td>27</td>
             <td>347</td>
             <td><b>7.219%</b></td>
           </tr>
           <tr>
-            <td>60-65</td>
+            <td>61-65</td>
             <td>15</td>
             <td>309</td>
             <td><b>4.630%</b></td>
           </tr>
           <tr>
-            <td>65-70</td>
+            <td>66-70</td>
             <td>27</td>
             <td>213</td>
             <td><b>11.739%</b></td>
           </tr>
           <tr>
-            <td>70-75</td>
+            <td>71-75</td>
             <td>24</td>
             <td>198</td>
             <td><b>10.811%</b></td>
           </tr>
           <tr>
-            <td>75+</td>
+            <td>&#62;75</td>
             <td>80</td>
             <td>351</td>
             <td><b>18.561%</b></td>
           </tr>
         </table>
+        <br><h4 style="text-align: left;" class="indent">Age was the #1 predictor for whethor or not someone would suffer a stroke.  While strokes are thankfully exceedingly rare for people 35 and younger, they do start gradually becoming more common after that.  As ages continue to rise, the stroke likelihood increases become much more steep, with people 65 and older being particularly prone to them.</h4><br>
       </div>
     </div>
     <br><br>
@@ -292,7 +300,7 @@
       <div class="col-md-6 text-center">
         <h3><b>Hypertension</b></h3>
         <div><img class="marginauto" src="Resources/stroke_hypertension.png" alt="centered image"/></div>
-        <h4><b>Stroke liklihood via Hypertension</b></h4>
+        <h4><b>Stroke likelihood via Hypertension</b></h4>
         <table class="center">
           <tr>
             <th>Hypertension &nbsp</th>
@@ -313,11 +321,12 @@
             <td><b>13.304%</b></td>
           </tr>
         </table>
+        <br><h4 style="text-align: left;" class="indent">Hypertension was a factor with a high correlation with having a stroke, with people with hypertension being four times as likely to have a stroke as those without it.</h4><br>
       </div>
       <div class="col-md-6 text-center">
         <h3><b>Heart Disease</b></h3>
         <div><img class="marginauto" src="Resources/stroke_heartdisease.png" alt="centered image"/></div>
-        <h4><b>Stroke liklihood via Heart Disease</b></h4>
+        <h4><b>Stroke likelihood via Heart Disease</b></h4>
         <table class="center">
           <tr>
             <th>Heart Disease &nbsp</th>
@@ -338,6 +347,7 @@
             <td><b>3.623%</b></td>
           </tr>
         </table>
+        <br><h4 style="text-align: left;" class="indent">Like hypertension, heart disease was another high indicator of having a stroke (though luckily in both cases, having hypertension/heart disease itself is on the rare side).  With heart disease, people are 4.5 times as likely to have a stroke as those without it are.</h4><br>
         </div>
     </div>
     <br><br>
@@ -346,7 +356,7 @@
       <div class="col-md-6 text-center">
         <h3><b>Marriage Status</b></h3>
         <div><img class="marginauto" src="Resources/stroke_evermarried.png" alt="centered image"/></div>
-        <h4><b>Stroke liklihood via Marriage Status</b></h4>
+        <h4><b>Stroke likelihood via Marriage Status</b></h4>
         <table class="center">
           <tr>
             <th>Ever Married &nbsp</th>
@@ -367,11 +377,12 @@
             <td><b>1.350%</b></td>
           </tr>
         </table>
+        <br><h4 style="text-align: left;" class="indent">In what came as a surprise to us, it appears as if marriage status plays a role in whether or not someone would have a stroke.  Shockingly, people who were married at some people were 4.3 times as likely to have a stroke as those who have never been married.  Yikes!  Does this mean that people should avoid getting married if they don't want to end up having a stroke??  Or, could something else be in play here?</h4><br>
       </div>
       <div class="col-md-6 text-center">
         <h3><b>Employment</b></h3>
         <div><img class="marginauto" src="Resources/stroke_work.png" alt="centered image"/></div>
-        <h4><b>Stroke liklihood via Employment</b></h4>
+        <h4><b>Stroke likelihood via Employment</b></h4>
         <table class="center">
           <tr>
             <th>Employment &nbsp</th>
@@ -410,6 +421,7 @@
             <td><b>0.000%</b></td>
           </tr>
         </table>
+        <br><h4 style="text-align: left;" class="indent">While employment would be something that we would want to look at when seeing if it leads to having a stroke, the data unforunately lumped most of the people into a nebulous Private group, so this wasn't particularly useful.  While it does once again show that children are very unlikely to have a stroke (and the Never Worked category is too small to draw any real conclusions from), the rest are in the same general ballpark.  However, self-employed people are somewhat more likely to have a stroke, which could indicate that the stress of being self employed and running your own business could ultimately increase the risk of a stroke.</h4><br>
       </div>
     </div>
     <br><br>
@@ -418,7 +430,7 @@
       <div class="col-md-6 text-center">
         <h3><b>Residence</b></h3>
         <div><img class="marginauto" src="Resources/stroke_residence.png" alt="centered image"/></div>
-        <h4><b>Stroke liklihood via Residence</b></h4>
+        <h4><b>Stroke likelihood via Residence</b></h4>
         <table class="center">
           <tr>
             <th>Residence &nbsp</th>
@@ -438,11 +450,13 @@
             <td>2318</td>
             <td><b>4.136%</b></td>
           </tr>
-        </table>      </div>
+        </table>
+        <br><h4 style="text-align: left;" class="indent">Residence is the category with the least amount of difference between having and not having a stroke, with results from people who live in urban vs rural environments being almost identical.</h4><br>
+        </div>
       <div class="col-md-6 text-center">
         <h3><b>Glucose Level</b></h3>
         <div><img class="marginauto" src="Resources/stroke_glucose.png" alt="centered image"/></div>
-        <h4><b>Stroke liklihood via Glucose</b></h4>
+        <h4><b>Stroke likelihood via Glucose</b></h4>
         <table class="center">
           <tr>
             <th>Glucose Level &nbsp</th>
@@ -457,49 +471,50 @@
             <td><b>3.509%</b></td>
           </tr>
           <tr>
-            <td>75-100</td>
+            <td>76-100</td>
             <td>55</td>
             <td>1892</td>
             <td><b>2.825%</b></td>
           </tr>
           <tr>
-            <td>100-125</td>
+            <td>101-125</td>
             <td>29</td>
             <td>916</td>
             <td><b>3.069%</b></td>
           </tr>
           <tr>
-            <td>125-150</td>
+            <td>126-150</td>
             <td>10</td>
             <td>258</td>
             <td><b>3.731%</b></td>
           </tr>
           <tr>
-            <td>150-175</td>
+            <td>151-175</td>
             <td>6</td>
             <td>116</td>
             <td><b>4.918%</b></td>
           </tr>
           <tr>
-            <td>175-200</td>
+            <td>176-200</td>
             <td>22</td>
             <td>130</td>
             <td><b>14.474%</b></td>
           </tr>
           <tr>
-            <td>200-225</td>
+            <td>201-225</td>
             <td>28</td>
             <td>212</td>
             <td><b>11.667%</b></td>
           </tr>
           <tr>
-            <td>225-250</td>
+            <td>226-250</td>
             <td>16</td>
             <td>112</td>
             <td><b>12.500%</b></td>
           </tr>
         </table>
         <br><p>* Glucose level &lt;100 = normal, 100-125 = prediabetic, &#62;125 = diabetic</p>
+        <br><h4 style="text-align: left;" class="indent">Glucose levels had a high level of impact on having a stroke.  While stroke results are fairly consistent up until 150, they increase after that.  Once blood sugar levels reach 175, the likelihood of having a stroke jumps roughly three times.</h4><br>
       </div>
     </div>
     <br><br>
@@ -508,7 +523,7 @@
       <div class="col-md-6 text-center">
         <h3><b>Body Mass Index</b></h3>
         <div><img class="marginauto" src="Resources/stroke_bmi.png" alt="centered image"/></div>
-        <h4><b>Stroke liklihood via BMI</b></h4>
+        <h4><b>Stroke likelihood via BMI</b></h4>
         <table class="center">
           <tr>
             <th>BMI &nbsp</th>
@@ -529,43 +544,43 @@
             <td><b>2.387%</b></td>
           </tr>
           <tr>
-            <td>25-29.9</td>
+            <td>25-30</td>
             <td>73</td>
             <td>1309</td>
             <td><b>5.282%</b></td>
           </tr>
           <tr>
-            <td>30-39.9</td>
+            <td>30.1-40</td>
             <td>80</td>
             <td>1432</td>
             <td><b>5.291%</b></td>
           </tr>
           <tr>
-            <td>40-49.9</td>
+            <td>40.1-50</td>
             <td>17</td>
             <td>312</td>
             <td><b>5.167%</b></td>
           </tr>
           <tr>
-            <td>50-59.9</td>
+            <td>50.1-60</td>
             <td>1</td>
             <td>65</td>
             <td><b>1.515%</b></td>
           </tr>
           <tr>
-            <td>60-69.9</td>
+            <td>60.1-70</td>
             <td>0</td>
             <td>9</td>
             <td><b>0.000%</b></td>
           </tr>
           <tr>
-            <td>70-79.9</td>
+            <td>70.1-80</td>
             <td>0</td>
             <td>2</td>
             <td><b>0.000%</b></td>
           </tr>
           <tr>
-            <td>80-89.9</td>
+            <td>80.1-90</td>
             <td>0</td>
             <td>0</td>
             <td><b>n/a</b></td>
@@ -577,12 +592,13 @@
             <td><b>0.000%</b></td>
           </tr>
         </table>
-        <br><p>* BMI &lt;18.5 = underweight, 18.5-24.9 = normal, 25-29.9 = overweight, &#62;30 = obese</p>
+        <br><p>* BMI &lt;18.5 = underweight, 18.5-24.9 = normal, 25-29.9 = overweight, &ge;30 = obese</p>
+        <br><h4 style="text-align: left;" class="indent">Body Mass Index is another factor with a high correlation to stroke results.  Strokes among underweight people are exceedingly rare, and people with healthy weight also have low stroke chances at 2.387%.  However, overweight people are above double their chances of having a stroke, as chances then hover around 5%.  Curiously, stroke percentages don't continue to rise as BMI goes up; it more or less stays the same once people become overweight.</h4><br>
       </div>
       <div class="col-md-6 text-center">
         <h3><b>Smoking Status</b></h3>
         <div><img class="marginauto" src="Resources/stroke_smoking.png" alt="centered image"/></div>
-        <h4><b>Stroke liklihood via Smoking Status</b></h4>
+        <h4><b>Stroke likelihood via Smoking Status</b></h4>
         <table class="center">
           <tr>
             <th>Smoking Status &nbsp</th>
@@ -615,14 +631,17 @@
             <td><b>1.994%</b></td>
           </tr>
         </table>
+        <br><h4 style="text-align: left;" class="indent">Smoking status didn't have a particularly large impact on whether or not someone had a stroke.  Smokers (and former smokers) did suffer them more often than lifetime non-smokers, but the difference wasn't overly large.  Curiously, the unknown category was clearly the lowest, and it doesn't appear to the the result of a small sample size, so something else must be in play here.</h4><br>
       </div>
 
       <br><br><br><br><br><br><br><br><br>
       <div class="col-md-12 text-center">
+        <br><h4 style="text-align: left;" class="indent">When we initially saw that having been married increases your chance of having a stroke by 3 times, this set off alarm bells.  Could the stresses of being married really outweigh all of the benefits, and by such a large degree?  While possible, that seemed suspect, so we decided to inspect things further.  We hypothesized that maybe it wasn't marriage itself that was leading to the increase in strokes; it could be that people who had been married would be older than people who hadn't.  Since older people are much more likely to have strokes than those who are younger, this could mean that Marriage Status effectively stood in as somewhat of a placeholder for Age.  In other words, having been married doesn't itself increase your chances of having a stroke, but having been married means that you're more likely to be older, which means that you're more likely to suffer a stroke.  To test our hypothesis, we reexamined the data, but only looking at people who were at least 40 years of age, which should elimate most of age discrepancy between marriage status.</h4><br>
+        <br>
         <h3><b>BONUS: Marriage Status (Age Adjusted)</b></h3>
         <h5>(Only individuals 40+ were examined)</h5>
         <div><img class="marginauto" src="Resources/stroke_evermarried_40.png" alt="centered image"/></div>
-        <h4><b>Stroke liklihood via Marriage Status</b></h4>
+        <h4><b>Stroke likelihood via Marriage Status</b></h4>
         <table class="center">
           <tr>
             <th>Ever Married &nbsp</th>
@@ -643,6 +662,7 @@
             <td><b>8.607%</b></td>
           </tr>
         </table>
+        <br><h4 style="text-align: left;" class="indent">Luckily (for people who are married or hope to be), our suspicions were confirmed!  Once you get rid of the age bias towards having been married, it no longer had a higher stroke level.  In fact, it now showed that it is actually people who have never been married that are more likely to suffer a stroke (8.607%) compared to those who have been (7.314%), though the difference isn't very large.  Still, this should come as good news to people who are married or who hope to be!</h4><br>
       </div>
     </div>
     <br><br>
