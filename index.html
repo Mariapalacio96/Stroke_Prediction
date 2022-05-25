@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Stroke Patient Data</title>
+  <title>Stroke Patient Dashboard</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/css/style.css">
 </head>
@@ -20,19 +20,25 @@
 
     <div class="row">
       <div class="col-md-9 text-left">
-        <h4 class="indent">According to the CDC's Stroke Facts, nearly 800,000 strokes occur in the United States on an annual basis. Of those, there is approximately a 15% 30-day mortality rate. Even for people who survive, many can be left with either very long roads to recovery or ultimately serious long-term disability. By helping to uncover what factors are more likely to lead to strokes, we ultimately hope to help people avoid them in the first place.</h4>
+        <h2 style="text-align: center;"><b>Overview</b></h2>
         <br>
-        <h4 class="indent">We chose the Random Forest classifier model to predict whether patients would or would not have a stroke.  The model was able to predict whether a patient had a stroke with 77% accuracy.</h4><br>  
+        <h4 class="indent">According to the CDC's <a href="https://www.cdc.gov/stroke/facts.htm" target="_blank">Stroke Facts</a>, nearly 800,000 strokes occur in the United States on an annual basis.  That is an average of one person suffering a stroke every 40 seconds (with someone dying from said stroke once every 3.5 minutes).  Of those, there is approximately a 15% 30-day mortality rate.  Even for people who survive, many can be left with either very long roads to recovery or ultimately serious long-term disability.  Obviously (and unfortunately), strokes are a very serious issue for people in this country.  By helping to uncover what factors are more likely to lead to strokes, we ultimately hope to help people avoid them in the first place.</h4>
+        <br>
+        <h4 class="indent">In an attempt to do so, we came across and used a dataset featuring both demographic and health information on 5,110 people and whether or not they had a stroke.  Demographic information included gender, age, marital history, occupation, and residence type while health information included whether or not they have hypertension and heart disease, glucose levels, body mass index (BMI), and smoking status.  (Information on individuals in the dataset can be viewed using the dropdown menu on the right).  Using that information, we aimed to see if we could:
+          <ol type="A">
+            <li>predict whether or not a person would have a stroke based on that information</li>
+            <li>determine which of those factors contribute to having a stroke and by how much</li></h4>
+          </ol>
       </div>
       <div class="col-md-3">
         <div class="well">
-          <h5>Patient ID No.:</h5>
+          <h5>Individual ID#:</h5>
           <!-- <select id="selDataset"></select> -->
           <select id="selDataset" onchange="optionChanged(this.value)"></select>
         </div>
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">Demographic Info</h3>
+            <h3 class="panel-title">Demographic/Health Info</h3>
           </div>
           <div id="sample-metadata" class="panel-body"></div>
         </div>
@@ -40,37 +46,604 @@
 
     </div>
     <div class="col-md-12 text-center">
-      <h2>Stroke Main Causes</h2>
-      <div><img class="marginauto" src="Resources/stroke_heatmap2.png" alt="centered image"/></div>
-      <p>This chart shows the factors that contribute the most to having a stroke.</p>
+      <h2><b>Stroke Dataset Breakdown</b></h2>
+      <br>
+      <div>
+        <img class="marginauto" src="Resources/initial_dataset.png" alt="centered image"/>
+      </div>
+      <p>* for hypertension, heart_disease, and stroke columns, 0 = no and 1 = yes</p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <h3><b>Gender</b></h3>
+        <div><img class="marginauto" src="Resources/demo_gender.png" alt="centered image"/></div>
+      </div>
+      <div class="col-md-6 text-center">
+        <h3><b>Age</b></h3>
+        <div><img class="marginauto" src="Resources/demo_age.png" alt="centered image"/></div>
+        </div>
     </div>
     <br><br>
 
     <div class="row">
       <div class="col-md-6 text-center">
-        <h2>Age</h2>
-        <div><img class="marginauto" src="Resources/stroke_age.png" alt="centered image"/></div>
-        <p>This chart shows the Age of stroke patients.</p>
+        <h3><b>Hypertension</b></h3>
+        <div><img class="marginauto" src="Resources/demo_hypertension.png" alt="centered image"/></div>
       </div>
       <div class="col-md-6 text-center">
-        <h2>Glucose Level</h2>
-        <div><img class="marginauto" src="Resources/stroke_glucose.png" alt="centered image"/></div>
-        <p>This chart shows the glucose level of stroke patients.</p>
-      </div>
+        <h3><b>Heart Disease</b></h3>
+        <div><img class="marginauto" src="Resources/demo_heartdisease.png" alt="centered image"/></div>
+        </div>
     </div>
+    <br><br>
 
     <div class="row">
       <div class="col-md-6 text-center">
-        <h2>BMI</h2>
-        <div><img class="marginauto" src="Resources/stroke_bmi.png" alt="centered image"/></div>
-        <p>This chart shows the BMI of stroke patients.</p>
+        <h3><b>Marriage Status</b></h3>
+        <div><img class="marginauto" src="Resources/demo_evermarried.png" alt="centered image"/></div>
       </div>
       <div class="col-md-6 text-center">
-        <h2>Ever Married</h2>
-        <div><img class="marginauto" src="Resources/stroke_evermarried.png" alt="centered image"/></div>
-        <p>This chart shows the marriage status of stroke patients.</p>
+        <h3><b>Employment</b></h3>
+        <div><img class="marginauto" src="Resources/demo_work.png" alt="centered image"/></div>
+        </div>
+    </div>
+    <br><br>
+
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <h3><b>Residence</b></h3>
+        <div><img class="marginauto" src="Resources/demo_residence.png" alt="centered image"/></div>
+      </div>
+      <div class="col-md-6 text-center">
+        <h3><b>Glucose</b></h3>
+        <div><img class="marginauto" src="Resources/demo_glucose.png" alt="centered image"/></div>
+        <p>* Glucose level &lt;100 = normal, 100-125 = prediabetic, &#62;125 = diabetic</p>
       </div>
     </div>
+    <br><br>
+
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <h3><b>Body Mass Index</b></h3>
+        <div><img class="marginauto" src="Resources/demo_bmi.png" alt="centered image"/></div>
+        <p>* BMI &lt;18.5 = underweight, 18.5-24.9 = normal, 25-29.9 = overweight, &#62;30 = obese</p>
+      </div>
+      <div class="col-md-6 text-center">
+        <h3><b>Smoking Status</b></h3>
+        <div><img class="marginauto" src="Resources/demo_smoking.png" alt="centered image"/></div>
+        </div>
+    </div>
+    <br><br>
+
+    <br><br><br>
+
+    </div>
+    <div class="col-md-12 text-center">
+      <h2><b>Stroke Prediction</b></h2>
+      <br><p>Since our data included the ultimate result that we were looking for (whether or not the person had a stroke), we used supervised machine learning to attempt to predict whether or not someone had a stroke given the ten different factors in the dataset.  We used six different methods: logistical regression with naive random oversampling, SMOTE oversampling, logistical regression with undersampling, SMOTEENN combination (over and under) sampling, balanced random forest, and easy ensemble.  In the end, balanced random forest reigned supreme with 77% accuracy, while the other methods ranged from 50% (logistical regression with undersampling) to 76% (logistical regression with random oversampling).</p><br>
+      <h3><b>Random Forest Classification Report</b></h3>
+      <div>
+        <img class="marginauto" src="Resources/rf_classification_report.png" alt="centered image"/>
+      </div>
+      <h3><b>Random Forest Confusion Matrix</b></h3>
+      <div>
+        <img class="marginauto" src="Resources/rf_confusion_matrix.png" alt="centered image"/>
+      </div>
+    </div>
+    <br><br><br>
+
+    <br><br><br>
+
+  </div>
+  <div class="col-md-12 text-center">
+    <h2><b>Stroke Factor Correlation Matrix</b></h2>
+    <div>
+      <img class="marginauto" src="Resources/stroke_heatmap2.png" alt="centered image"/>
+    </div>
+  </div>
+  <br><br><br>
+
+    <div class="col-md-12 text-center">
+      <h2><b>Stroke Liklihood via Each Factor</b></h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <h3><b>Gender</b></h3>
+        <div><img class="marginauto" src="Resources/stroke_gender.png" alt="centered image"/></div>
+        <h4><b>Stroke liklihood via Gender</b></h4>
+        <table class="center">
+          <tr>
+            <th>Gender &nbsp</th>
+            <th>Stroke &nbsp</th>
+            <th>No Stroke &nbsp</th>
+            <th>Stroke % &nbsp</th>
+          </tr>
+          <tr>
+            <td>male</td>
+            <td>89</td>
+            <td>1922</td>
+            <td><b>4.426%</b></td>
+          </tr>
+          <tr>
+            <td>female</td>
+            <td>120</td>
+            <td>2777</td>
+            <td><b>4.142%</b></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-6 text-center">
+        <h3><b>Age</b></h3>
+        <div><img class="marginauto" src="Resources/stroke_age.png" alt="centered image"/></div>
+        <h4><b>Stroke liklihood via Age</b></h4>
+        <table class="center">
+          <tr>
+            <th>Age &nbsp</th>
+            <th>Stroke &nbsp</th>
+            <th>No Stroke &nbsp</th>
+            <th>Stroke % &nbsp</th>
+          </tr>
+          <tr>
+            <td>0-5</td>
+            <td>0</td>
+            <td>311</td>
+            <td><b>0.000%</b></td>
+          </tr>
+          <tr>
+            <td>5-10</td>
+            <td>0</td>
+            <td>182</td>
+            <td><b>0.000%</b></td>
+          </tr>
+          <tr>
+            <td>10-15</td>
+            <td>1</td>
+            <td>233</td>
+            <td><b>0.427%</b></td>
+          </tr>
+          <tr>
+            <td>15-20</td>
+            <td>0</td>
+            <td>273</td>
+            <td><b>0.000%</b></td>
+          </tr>
+          <tr>
+            <td>20-25</td>
+            <td>0</td>
+            <td>264</td>
+            <td><b>0.000%</b></td>
+          </tr>
+          <tr>
+            <td>25-30</td>
+            <td>0</td>
+            <td>271</td>
+            <td><b>0.000%</b></td>
+          </tr>
+          <tr>
+            <td>30-35</td>
+            <td>1</td>
+            <td>312</td>
+            <td><b>0.319%</b></td>
+          </tr>
+          <tr>
+            <td>35-40</td>
+            <td>4</td>
+            <td>331</td>
+            <td><b>1.194%</b></td>
+          </tr>
+          <tr>
+            <td>40-45</td>
+            <td>5</td>
+            <td>358</td>
+            <td><b>1.377%</b></td>
+          </tr>
+          <tr>
+            <td>45-50</td>
+            <td>10</td>
+            <td>343</td>
+            <td><b>2.833%</b></td>
+          </tr>
+          <tr>
+            <td>50-55</td>
+            <td>15</td>
+            <td>403</td>
+            <td><b>3.589%</b></td>
+          </tr>
+          <tr>
+            <td>55-60</td>
+            <td>27</td>
+            <td>347</td>
+            <td><b>7.219%</b></td>
+          </tr>
+          <tr>
+            <td>60-65</td>
+            <td>15</td>
+            <td>309</td>
+            <td><b>4.630%</b></td>
+          </tr>
+          <tr>
+            <td>65-70</td>
+            <td>27</td>
+            <td>213</td>
+            <td><b>11.739%</b></td>
+          </tr>
+          <tr>
+            <td>70-75</td>
+            <td>24</td>
+            <td>198</td>
+            <td><b>10.811%</b></td>
+          </tr>
+          <tr>
+            <td>75+</td>
+            <td>80</td>
+            <td>351</td>
+            <td><b>18.561%</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <br><br>
+
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <h3><b>Hypertension</b></h3>
+        <div><img class="marginauto" src="Resources/stroke_hypertension.png" alt="centered image"/></div>
+        <h4><b>Stroke liklihood via Hypertension</b></h4>
+        <table class="center">
+          <tr>
+            <th>Hypertension &nbsp</th>
+            <th>Stroke &nbsp</th>
+            <th>No Stroke &nbsp</th>
+            <th>Stroke % &nbsp</th>
+          </tr>
+          <tr>
+            <td>healthy</td>
+            <td>149</td>
+            <td>4308</td>
+            <td><b>3.343%</b></td>
+          </tr>
+          <tr>
+            <td>hypertension</td>
+            <td>60</td>
+            <td>391</td>
+            <td><b>13.304%</b></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-6 text-center">
+        <h3><b>Heart Disease</b></h3>
+        <div><img class="marginauto" src="Resources/stroke_heartdisease.png" alt="centered image"/></div>
+        <h4><b>Stroke liklihood via Heart Disease</b></h4>
+        <table class="center">
+          <tr>
+            <th>Heart Disease &nbsp</th>
+            <th>Stroke &nbsp</th>
+            <th>No Stroke &nbsp</th>
+            <th>Stroke % &nbsp</th>
+          </tr>
+          <tr>
+            <td>heart disease</td>
+            <td>40</td>
+            <td>203</td>
+            <td><b>16.461%</b></td>
+          </tr>
+          <tr>
+            <td>healthy</td>
+            <td>169</td>
+            <td>4496</td>
+            <td><b>3.623%</b></td>
+          </tr>
+        </table>
+        </div>
+    </div>
+    <br><br>
+
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <h3><b>Marriage Status</b></h3>
+        <div><img class="marginauto" src="Resources/stroke_evermarried.png" alt="centered image"/></div>
+        <h4><b>Stroke liklihood via Marriage Status</b></h4>
+        <table class="center">
+          <tr>
+            <th>Ever Married &nbsp</th>
+            <th>Stroke &nbsp</th>
+            <th>No Stroke &nbsp</th>
+            <th>Stroke % &nbsp</th>
+          </tr>
+          <tr>
+            <td>ever married</td>
+            <td>186</td>
+            <td>3018</td>
+            <td><b>5.805%</b></td>
+          </tr>
+          <tr>
+            <td>never married</td>
+            <td>23</td>
+            <td>1681</td>
+            <td><b>1.350%</b></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-6 text-center">
+        <h3><b>Employment</b></h3>
+        <div><img class="marginauto" src="Resources/stroke_work.png" alt="centered image"/></div>
+        <h4><b>Stroke liklihood via Employment</b></h4>
+        <table class="center">
+          <tr>
+            <th>Employment &nbsp</th>
+            <th>Stroke &nbsp</th>
+            <th>No Stroke &nbsp</th>
+            <th>Stroke % &nbsp</th>
+          </tr>
+          <tr>
+            <td>private</td>
+            <td>127</td>
+            <td>2683</td>
+            <td><b>4.520%</b></td>
+          </tr>
+          <tr>
+            <td>self-employed</td>
+            <td>53</td>
+            <td>722</td>
+            <td><b>6.839%</b></td>
+          </tr>
+          <tr>
+            <td>government</td>
+            <td>28</td>
+            <td>602</td>
+            <td><b>4.444%</b></td>
+          </tr>
+          <tr>
+            <td>children</td>
+            <td>1</td>
+            <td>670</td>
+            <td><b>0.149%</b></td>
+          </tr>
+          <tr>
+            <td>never worked</td>
+            <td>0</td>
+            <td>22</td>
+            <td><b>0.000%</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <br><br>
+
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <h3><b>Residence</b></h3>
+        <div><img class="marginauto" src="Resources/stroke_residence.png" alt="centered image"/></div>
+        <h4><b>Stroke liklihood via Residence</b></h4>
+        <table class="center">
+          <tr>
+            <th>Residence &nbsp</th>
+            <th>Stroke &nbsp</th>
+            <th>No Stroke &nbsp</th>
+            <th>Stroke % &nbsp</th>
+          </tr>
+          <tr>
+            <td>urban</td>
+            <td>109</td>
+            <td>2381</td>
+            <td><b>4.378%</b></td>
+          </tr>
+          <tr>
+            <td>rural</td>
+            <td>100</td>
+            <td>2318</td>
+            <td><b>4.136%</b></td>
+          </tr>
+        </table>      </div>
+      <div class="col-md-6 text-center">
+        <h3><b>Glucose Level</b></h3>
+        <div><img class="marginauto" src="Resources/stroke_glucose.png" alt="centered image"/></div>
+        <h4><b>Stroke liklihood via Glucose</b></h4>
+        <table class="center">
+          <tr>
+            <th>Glucose Level &nbsp</th>
+            <th>Stroke &nbsp</th>
+            <th>No Stroke &nbsp</th>
+            <th>Stroke % &nbsp</th>
+          </tr>
+          <tr>
+            <td>50-75</td>
+            <td>38</td>
+            <td>1045</td>
+            <td><b>3.509%</b></td>
+          </tr>
+          <tr>
+            <td>75-100</td>
+            <td>55</td>
+            <td>1892</td>
+            <td><b>2.825%</b></td>
+          </tr>
+          <tr>
+            <td>100-125</td>
+            <td>29</td>
+            <td>916</td>
+            <td><b>3.069%</b></td>
+          </tr>
+          <tr>
+            <td>125-150</td>
+            <td>10</td>
+            <td>258</td>
+            <td><b>3.731%</b></td>
+          </tr>
+          <tr>
+            <td>150-175</td>
+            <td>6</td>
+            <td>116</td>
+            <td><b>4.918%</b></td>
+          </tr>
+          <tr>
+            <td>175-200</td>
+            <td>22</td>
+            <td>130</td>
+            <td><b>14.474%</b></td>
+          </tr>
+          <tr>
+            <td>200-225</td>
+            <td>28</td>
+            <td>212</td>
+            <td><b>11.667%</b></td>
+          </tr>
+          <tr>
+            <td>225-250</td>
+            <td>16</td>
+            <td>112</td>
+            <td><b>12.500%</b></td>
+          </tr>
+        </table>
+        <br><p>* Glucose level &lt;100 = normal, 100-125 = prediabetic, &#62;125 = diabetic</p>
+      </div>
+    </div>
+    <br><br>
+
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <h3><b>Body Mass Index</b></h3>
+        <div><img class="marginauto" src="Resources/stroke_bmi.png" alt="centered image"/></div>
+        <h4><b>Stroke liklihood via BMI</b></h4>
+        <table class="center">
+          <tr>
+            <th>BMI &nbsp</th>
+            <th>Stroke &nbsp</th>
+            <th>No Stroke &nbsp</th>
+            <th>Stroke % &nbsp</th>
+          </tr>
+          <tr>
+            <td>&lt;18.5</td>
+            <td>1</td>
+            <td>348</td>
+            <td><b>0.287%</b></td>
+          </tr>
+          <tr>
+            <td>18.5-24.9</td>
+            <td>37</td>
+            <td>1220</td>
+            <td><b>2.387%</b></td>
+          </tr>
+          <tr>
+            <td>25-29.9</td>
+            <td>73</td>
+            <td>1309</td>
+            <td><b>5.282%</b></td>
+          </tr>
+          <tr>
+            <td>30-39.9</td>
+            <td>80</td>
+            <td>1432</td>
+            <td><b>5.291%</b></td>
+          </tr>
+          <tr>
+            <td>40-49.9</td>
+            <td>17</td>
+            <td>312</td>
+            <td><b>5.167%</b></td>
+          </tr>
+          <tr>
+            <td>50-59.9</td>
+            <td>1</td>
+            <td>65</td>
+            <td><b>1.515%</b></td>
+          </tr>
+          <tr>
+            <td>60-69.9</td>
+            <td>0</td>
+            <td>9</td>
+            <td><b>0.000%</b></td>
+          </tr>
+          <tr>
+            <td>70-79.9</td>
+            <td>0</td>
+            <td>2</td>
+            <td><b>0.000%</b></td>
+          </tr>
+          <tr>
+            <td>80-89.9</td>
+            <td>0</td>
+            <td>0</td>
+            <td><b>n/a</b></td>
+          </tr>
+          <tr>
+            <td>&#62;90</td>
+            <td>0</td>
+            <td>2</td>
+            <td><b>0.000%</b></td>
+          </tr>
+        </table>
+        <br><p>* BMI &lt;18.5 = underweight, 18.5-24.9 = normal, 25-29.9 = overweight, &#62;30 = obese</p>
+      </div>
+      <div class="col-md-6 text-center">
+        <h3><b>Smoking Status</b></h3>
+        <div><img class="marginauto" src="Resources/stroke_smoking.png" alt="centered image"/></div>
+        <h4><b>Stroke liklihood via Smoking Status</b></h4>
+        <table class="center">
+          <tr>
+            <th>Smoking Status &nbsp</th>
+            <th>Stroke &nbsp</th>
+            <th>No Stroke &nbsp</th>
+            <th>Stroke % &nbsp</th>
+          </tr>
+          <tr>
+            <td>formerly</td>
+            <td>57</td>
+            <td>779</td>
+            <td><b>6.818%</b></td>
+          </tr>
+          <tr>
+            <td>never smoked</td>
+            <td>84</td>
+            <td>1768</td>
+            <td><b>4.536%</b></td>
+          </tr>
+          <tr>
+            <td>smokes</td>
+            <td>39</td>
+            <td>698</td>
+            <td><b>5.292%</b></td>
+          </tr>
+          <tr>
+            <td>unknown</td>
+            <td>29</td>
+            <td>1454</td>
+            <td><b>1.994%</b></td>
+          </tr>
+        </table>
+      </div>
+
+      <br><br><br><br><br><br><br><br><br>
+      <div class="col-md-12 text-center">
+        <h3><b>BONUS: Marriage Status (Age Adjusted)</b></h3>
+        <h5>(Only individuals 40+ were examined)</h5>
+        <div><img class="marginauto" src="Resources/stroke_evermarried_40.png" alt="centered image"/></div>
+        <h4><b>Stroke liklihood via Marriage Status</b></h4>
+        <table class="center">
+          <tr>
+            <th>Ever Married &nbsp</th>
+            <th>Stroke &nbsp</th>
+            <th>No Stroke &nbsp</th>
+            <th>Stroke % &nbsp</th>
+          </tr>
+          <tr>
+            <td>ever married</td>
+            <td>182</td>
+            <td>2369</td>
+            <td><b>7.134%</b></td>
+          </tr>
+          <tr>
+            <td>never married</td>
+            <td>21</td>
+            <td>223</td>
+            <td><b>8.607%</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <br><br>
+
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>

@@ -1,7 +1,5 @@
 # Stroke Prediction
 
-## Deliverable 1
-
 Slides:
 https://docs.google.com/presentation/d/1T1olflH12lzSqILTFJWoFIN8zBhSiSef2Qs52ikFzmE/edit?usp=sharing
 
@@ -22,31 +20,18 @@ This data shows demographic and health information about 5,100 patients and whet
 * Which factors have a statistically significant correlation on the result of having a stroke, and what is that correlation?
 * Do some factors correlate more with having a stroke than others?
 
-### Communication Process
-
-In addition to divvying up main responsibilities and setting up our GitHub repository with separate branches, we set up a few plans for communication.  We established a Slack group chat for quick and easy communication and the sharing of information.  We also made plans for a Zoom chat on Sunday go over things and make sure everything is in order before we submit our progress so far.
-
-
-## Deliverable 2
 
 ### Exploratory Data
 Out of the 5100 rows, 201 rows were dropped with null BMIs and the one with other Gender.  There were 1483 rows with unknown Smoking, but we didn't want to eliminate 1/3rd of the dataset. All ages were rounded to a whole number. 
 
 When we did the machine learning model, the first time, it was predicting if a patient would not have a stroke. The confusion matrix wasn't intuitive and a little confusing. We wanted the analysis to predict the likelihood of a stroke. To make the machine learning results less confusing we changed the original dataset to reflect 1 as stroke and 0 as no stroke. 
 
+### Feature Selection
+We dropped the ID column because that was a unique identifier for each patient and wouldn't influece the patient having a stroke. We changed all of the data in columns that had words to a binary 1 or 0 so it could be the machine learning model. They were changed back to be used in visualizations.
+
 ### Splitting Data
 We used the train_test_split function of sklearn to create training and testing data. We used the default settings for the function that uses 70% for the training set and 30% for the testing set.
 
 ### Machine Learning Model
 We chose to use supervised machine learning because our data has a discrete outcome. Whether or not a patient had a stroke given certain characteristics. The machine learning model that had the most success predicting stroke results was the random forest classifier model. It made the correct prediction 77% of the time vs. all of the other models we tried which were correct (50% to 76%) of the time.
-
-![]()
-![]()
-![]()
-![]()
-
-
-## Deliverable 3
-
-## Deliverable 4
 
